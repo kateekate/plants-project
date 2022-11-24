@@ -16,13 +16,14 @@ body {
   margin: auto;
   padding: auto;
   position: relative;
-  /* font-family: 'Poppins', sans-serif; */
+
 }
 
 /* BLOCK ON FULL SCREEN WIDTH */
 
 .section {
-  width: 100vw;
+  max-width: 100vw;
+  /* width: 100vw; */
   left: 0px;
   top: 0px;
   border-radius: 0px;
@@ -40,11 +41,6 @@ body {
 
 .header-section {
   background-color: #EDF2EC;
-  /* height: 666px;
-  left: 0px;
-  top: 0px;
-  border-radius: 0px; */
-
 }
 
 header {
@@ -57,6 +53,7 @@ header {
   padding: 50px 109px;
   left: 50%;
   border-radius: 0px;
+  background-color: #EDF2EC;
   color: #010201;
   transform: translateX(-50%);
   font-family: 'Inika', serif;
@@ -65,7 +62,6 @@ header {
 
 .header-logo {
   width: 79.17px;
-  /* height: 20.04px; */
   cursor: default;
 }
 
@@ -105,20 +101,15 @@ a {
   background-color: transparent;
 }
 
-.burger__line,
-.burger___line {
+.burger__line {
   position: absolute;
   left: 0;
   top: 50%;
   width: 100%;
   height: 2px;
   background-color: #717171;
-  transform: translateY(-280%);
-}
-
-.burger___line {
-  margin-bottom: 9px;
-  margin-top: 9px;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease-in-out;
 }
 
 
@@ -130,6 +121,7 @@ a {
   width: 100%;
   height: 2px;
   background-color: #717171;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
 .burger::before {
@@ -140,53 +132,55 @@ a {
   bottom: 0;
 }
 
+.burger--active .burger__line {
+  opacity: 0;
+}
+
+.burger--active::before {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.burger--active::after {
+  bottom: auto;
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+.stop-scroll {
+  overflow: hidden;
+}
+
 /* HEADER END */
 
 .leafs {
-  /* position: absolute; */
-  width: 463px;
-  height: 407.36px;
-  /* left: 100px;
-  top: 150px;
-  object-fit: cover; */
+  width: 40vw;
+  max-width: 463px;
+  max-height: 407.36px;
   margin: 150px 109px 109px 107px;
 }
 
 .welcome-section {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .welcome-text {
   width: 558.87px;
-  /* height: 340px;
-  left: 772.13px;
-  top: 160px; */
   margin: 200px 130px 126px 107px;
 }
 
 .welcome-text h1 {
-  /* width: 558.87px;
-  height: 101px;
-  left: 772.13px;
-  top: 200px; */
   font-family: 'Inter';
-  /* font-style: normal; */
-  /* font-weight: 700; */
   font-size: 45px;
   line-height: 50px;
   color: #717171;
-
 }
 
 .welcome-text p {
-  width: 534.89px;
-  /* height: 105px; */
-  /* left: 772.13px;
-  top: 343px; */
+  max-width: 534.89px;
   font-family: 'Inter';
-  /* font-style: normal;
-  font-weight: 400; */
   font-size: 20px;
   line-height: 35px;
   color: #636060;
@@ -216,62 +210,43 @@ a {
 
 /* About Start */
 .about {
-  height: 666px;
-  /* left: 0px;
-  top: 666px; */
   background: #FFFFFF;
 }
 
 .about-div {
-  /* height: 100%;
-  width: 100vw; */
-  /* position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100vw;
   gap: 153px;
   padding: 82px 109px 105px 109px;
 }
 
 .about-title {
-  width: 463px;
-  height: 102px;
-  /* left: 109px;
-  top: 150px; */
+  width: 75%;
   color: #499A18;
   font-family: 'Inika';
-  /* font-style: normal;
-  font-weight: 400; */
   font-size: 40px;
   line-height: 52px;
 }
 
 .about-description {
-  width: 605px;
-  /* height: 208px;
-  left: 109px;
-  top: 292px; */
   margin-top: 40px;
   font-family: 'Inter';
-  /* font-style: normal;
-  font-weight: 400; */
   font-size: 20px;
   line-height: 30px;
   color: #636060;
 }
 
-/* .houseplant {
-  width: 464px;
-  height: 479px;
-  left: 867px;
-  top: 82px;
-} */
-
+.houseplant {
+  max-width: 464px;
+  max-height: 479px;
+  width: 35vw;
+}
 
 /* Service Start */
 
 .service {
-  height: 1300px;
   background: #EDF2EC;
 }
 
@@ -332,6 +307,7 @@ a {
   display: flex;
   justify-content: center;
   margin-top: 70px;
+  padding-bottom: 119px;
   gap: 35px;
   flex-wrap: wrap;
 }
@@ -384,14 +360,13 @@ a {
 .price h1 {
   font-family: 'Inter';
   font-size: 40px;
+  padding-bottom: 60px;
 }
 
 .price-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 332px;
-  margin: 60px 438px 132px 0px;
   border: 1px solid #E3E1D5;
   border-radius: 20px;
   gap: 32px;
@@ -427,11 +402,20 @@ a {
 }
 
 .contact h1 {
+  width: 60%;
   font-family: 'Inter';
   font-size: 40px;
   margin-top: 40px;
-  margin-bottom: 29px;
+  margin-bottom: 31px;
   text-align: end;
+}
+
+.contact img {
+  max-width: 298px;
+  max-height: 331px;
+  width: 40%;
+  margin-top: 44px;
+  margin-bottom: 77px;
 }
 
 .contact-button {
@@ -442,11 +426,12 @@ a {
   color: #E06733;
   border-radius: 5px;
   font-size: 20px;
-  width: 162px;
   line-height: 26px;
   font-weight: 700;
   font-family: 'Inika';
-  padding: 5px 0px 5px 0px;
+  padding: 12px 32px 12px 32px;
+  max-width: 162px;
+  max-height: 50px;
 }
 
 .contact-button:hover {
@@ -471,10 +456,16 @@ a {
 
 .contact-us-div {
   display: flex;
+  justify-content: center;
+  min-height: 28vh;
 }
 
 .gardener-img {
+  max-width: 622px;
+  max-height: 542px;
+  width: 45%;
   padding: 45px 113px 0.01px 109px;
+  margin-top: auto;
 }
 
 .contact-us-div h1 {
@@ -594,7 +585,8 @@ footer {
   display: flex;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 1000px) {
 
   .container {
     width: 100vw;
@@ -725,6 +717,7 @@ footer {
     line-height: 42px;
     margin: 40px 55px 0px;
     text-align: start;
+    padding-bottom: 55px;
   }
 
   .price-item {
@@ -751,14 +744,7 @@ footer {
   }
 
   .contact img {
-    width: 152px;
-    height: 174.98px;
     margin: 44px 122px 43px 0px;
-  }
-
-  .contact-button {
-    width: 162px;
-    height: 50px;
   }
 
   /* CONTACT US START */
@@ -783,6 +769,7 @@ footer {
   .contact-us-div {
     flex-direction: column-reverse;
     align-items: center;
+    gap: 0px;
   }
 
   .contact-us-button {
@@ -815,7 +802,7 @@ footer {
 
 
 
-@media (max-width: 420px) {
+@media (max-width: 600px) {
 
   body {
     height: 100vh;
@@ -823,13 +810,12 @@ footer {
   }
 
   header {
-    position: relative;
+    position: fixed;
     display: flex;
     align-items: center;
     left: 0;
     justify-content: space-between;
     transform: none;
-    /* gap: 213px; */
     width: 100vw;
     height: 96px;
     margin: 0;
@@ -857,15 +843,17 @@ footer {
     top: 0;
     z-index: 1000;
     padding: 90px 0px;
-    background-color: #C1E698;
+    background-color: #EDF2EC;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
+    margin-top: 95px;
     transform: translateX(150%);
     transition: transform 0.6s ease-in-out;
+    color: black;
+    font-family: 'Inika';
   }
 
   .nav--visible {
@@ -876,9 +864,9 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 120px;
-    font-size: 20px;
-    border-bottom: 1px solid #FFFFFF;
+    width: 220px;
+    font-size: 28px;
+    border-bottom: 2px solid #499A18;
     padding-bottom: 8px;
   }
 
@@ -889,11 +877,11 @@ footer {
 
   .welcome-section {
     width: 100vw;
+    padding-top: 100px;
   }
 
   .welcome-text {
     margin: 9px 0px 30px 25px;
-    /* width: 100vw; */
     text-align: start;
     width: 100%;
     padding-right: 0px;
@@ -1004,7 +992,7 @@ footer {
     font-size: 25px;
     line-height: 30px;
     text-align: center;
-    margin: 25px 146px 42px 146px;
+    padding-bottom: 42px;
   }
 
   .price-item {
@@ -1078,6 +1066,7 @@ footer {
     margin-top: 128px;
     width: 100px;
     height: 124.25px;
+
   }
 
   footer {
@@ -1089,3 +1078,49 @@ footer {
     padding: 0px;
   }
 }
+
+/* @media (max-width: 375px) {
+  .nav {
+    padding: 0px;
+  }
+
+  .navigation-link {
+    font-size: 23px;
+  }
+} */
+
+/* @media (max-width: 327px) {
+  .welcome-text p {
+    width: 290px;
+    margin: 0px;
+    padding-top: 23px;
+    padding-bottom: 24px;
+  }
+
+  .about-title {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 35px;
+    width: 265px;
+  }
+
+  .about-description {
+    width: 291px;
+    margin: 21px 0px 0px 20px;
+  }
+
+  .about-img {
+    margin-right: 35px;
+    margin-top: 10px;
+  }
+} */
+
+/* @media (min-width: 1439px) {
+  .section {
+    max-width: 100vw;
+  }
+
+  .container {
+    max-width: 100vw;
+  }
+} */
